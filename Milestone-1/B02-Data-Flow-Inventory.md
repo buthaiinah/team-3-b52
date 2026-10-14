@@ -3,50 +3,79 @@
 
 ## 1. Purpose
 
-This document identifies the external entities and major data flows of the PearlMart Inventory Management System. It supports the preparation and review of the Level 0 Data Flow Diagram (DFD).
+This document records the data flows provided for the PearlMart Inventory Management System and supports the preparation and validation of the DFD diagrams.
+
+The data flow inventory is based on the project file `dfd-boundary-flows.csv`.
 
 ## 2. External Entities
 
 | Entity | Description |
 |---|---|
-| Employee | An authorized user who manages inventory, sales, and related operations. |
-| Supplier | An external party that receives purchase orders and provides delivery information. |
-| Customer | A person who purchases products or submits replacement and unavailable-item requests. |
+| Employee | An authorized employee who interacts with the inventory management system. |
+| Supplier | An external entity that receives supplier orders and provides goods and invoice details. |
 
-## 3. Main Data Flows
+## 3. Data Flow Inventory
 
-| ID | Source | Destination | Data Flow |
+The original data flow inventory contains 16 flows.
+
+The numbers 1 through 7 refer to internal DFD processes. They are preserved here exactly as provided in the source file.
+
+| ID | Source | Data Flow | Destination |
 |---|---|---|---|
-| F01 | Employee | Inventory Management System | Login details and inventory updates |
-| F02 | Inventory Management System | Employee | Authentication results and inventory information |
-| F03 | Employee | Inventory Management System | Supplier orders and received quantities |
-| F04 | Inventory Management System | Supplier | Purchase order details |
-| F05 | Supplier | Inventory Management System | Supplier invoice and delivery information |
-| F06 | Employee | Inventory Management System | Sales and cancellation details |
-| F07 | Customer | Inventory Management System | Replacement or unavailable-item requests |
-| F08 | Inventory Management System | Employee | Transaction confirmations and inventory reports |
+| F01 | Employee | Credentials and password change | 1 |
+| F02 | 1 | Access and password result | Employee |
+| F03 | Employee | Inventory maintenance request | 2 |
+| F04 | 2 | Item details and maintenance result | Employee |
+| F05 | Employee | Order and receipt details | 3 |
+| F06 | 3 | Order and receipt result | Employee |
+| F07 | Employee | Sale details and decision | 4 |
+| F08 | 4 | Sale result and receipt | Employee |
+| F09 | Employee | Replacement request | 5 |
+| F10 | 5 | Replacement result | Employee |
+| F11 | Employee | Customer item request | 6 |
+| F12 | 6 | Request confirmation and list | Employee |
+| F13 | Employee | Report criteria | 7 |
+| F14 | 7 | Inventory activity report | Employee |
+| F15 | 3 | Supplier order | Supplier |
+| F16 | Supplier | Supplier goods and invoice details | 3 |
 
-## 4. Level 0 DFD Preparation
+## 4. DFD Modeling Notes
 
-The Level 0 DFD should:
+The source inventory identifies seven numbered internal processes.
 
-- Use Gane-Sarson notation.
-- Show the main system processes.
-- Identify the external entities.
-- Show the main data flows with meaningful labels.
-- Include relevant data stores where appropriate.
-- Remain consistent with the approved project scope and requirements.
+For a context-level representation using one system process, the external interactions must be represented at the system boundary without showing internal process numbers.
 
-## 5. Review Checklist
+For a decomposed DFD, the original process numbers and the corresponding flows should be retained.
 
-- [ ] External entities have been reviewed.
-- [ ] Major data flows have been identified.
-- [ ] Data flow names are clear and meaningful.
-- [ ] The Level 0 DFD has been created.
-- [ ] The diagram follows Gane-Sarson notation.
-- [ ] The diagram is consistent with the project requirements.
-- [ ] The diagram has been reviewed by a team member.
+The numbering and naming of DFD levels must follow the course lab instructions.
 
-## 6. Status
+## 5. Consistency and Balancing
 
-In Progress - The data flow inventory is a working draft. The Level 0 DFD and its consistency with the project requirements still need to be reviewed.
+The diagrams should be checked to ensure that:
+
+- The external entities are represented consistently.
+- Data flow directions match the source inventory.
+- Data flow names remain meaningful and consistent.
+- Supplier-related flows are correctly connected.
+- The decomposition preserves the external inputs and outputs.
+- No unsupported external entities or flows are introduced.
+- The diagrams are consistent with the project scope and assumptions.
+
+## 6. Review Checklist
+
+- [ ] Verify all 16 flows against the source CSV.
+- [ ] Confirm the correct DFD level numbering.
+- [ ] Review the external entities.
+- [ ] Prepare the required DFD diagram using Gane-Sarson notation.
+- [ ] Check flow names and directions.
+- [ ] Validate consistency and balancing.
+- [ ] Review the diagram with another team member.
+- [ ] Apply any required corrections.
+
+## 7. Status
+
+In Progress.
+
+The 16 data flows have been documented from the supplied source inventory.
+
+The DFD diagram, level numbering, balancing, and team review still require validation.
