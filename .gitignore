@@ -1,0 +1,27 @@
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor temporary files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Microsoft Office temporary files
+~$*
+
+# Temporary and log files
+*.tmp
+*.temp
+*.log
+
+# Local backup files
+*.bak
+*.backup
+
+# Keep project deliverables such as:
+# .vpp, .docx, .pdf, .png, .jpg
