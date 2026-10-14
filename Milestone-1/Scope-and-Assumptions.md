@@ -37,7 +37,7 @@ Suppliers are external entities. The system exchanges order and delivery informa
 | A04 | Supplier deliveries are verified before received quantities are added to inventory. | Ensures recorded quantities reflect accepted deliveries. | DFD, Use Case Specifications |
 | A05 | A cancelled sale does not permanently reduce available inventory. | Preserves stock consistency. | DFD, Use Case Specifications |
 | A06 | Replacement requests must satisfy PearlMart's replacement policy before stock is adjusted. | The policy is mentioned but its detailed conditions are not specified. | Use Case Specifications, Class Diagram |
-| A07 | Applicable tax rates and discount rules are assumed to follow store policy. The exact rates and calculation rules are provisional and must be confirmed before finalizing the related models |
+| A07 | Applicable tax rates and discount rules are assumed to follow store policy. The exact rates and calculation rules are provisional and must be confirmed before finalizing the related models. | The project requirements do not specify exact tax rates or discount formulas, so confirmation is needed before finalizing the billing logic. | DFD, Use Case Specifications, Class Diagram |
 | A08 | Inventory changes from warehouse and billing counters are recorded consistently in the same system. | The project requires an integrated inventory record. | DFD, Class Diagram |
 
 ### 5. Out of Scope
