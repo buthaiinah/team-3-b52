@@ -54,3 +54,33 @@ Review Date:
 Participants:
 Reviewer:
 Status: Pending review
+## 4. Sprint 1 Review Findings
+
+### Reviewed Work
+- The team reviewed the available requirements and DFD documentation.
+- The discussion focused on consistency between DFD Level 0, Level 1, and Level 2.
+
+### Identified Improvement
+- Some data flow names need to be standardized across the diagrams.
+- DFD balancing and consistency checks should be completed before final approval.
+
+## 5. Sprint 1 Retrospective Findings
+
+### What Went Well
+- Team members collaborated on preparing and reviewing the project documentation.
+- GitHub Issues and Pull Requests helped organize and review changes.
+
+### What Needs Improvement
+- Data flow names should remain consistent across all DFD levels.
+- Cross-diagram validation should take place before approving final deliverables.
+
+## 6. Sprint 2 Action Plan
+
+- Review the DFDs together.
+- Standardize data flow names.
+- Verify balancing between DFD levels.
+- Document any corrections and their validation results.
+
+**Action Status:** Planned for Sprint 2.
+
+**Related Issue:** #8
