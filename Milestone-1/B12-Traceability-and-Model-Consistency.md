@@ -1,4 +1,3 @@
-
 # B12 - Traceability and Model Consistency Review
 
 ## Project Information
@@ -9,7 +8,7 @@
 **Related Issue:** #12  
 **Responsible Member:** Aldana Al-Mamari  
 **Sprint:** Sprint 2  
-**Review Status:** In Progress
+**Review Status:** Completed
 
 ## 1. Objective
 
@@ -17,7 +16,7 @@ The objective of this task is to review traceability and consistency between the
 
 This review also addresses the improvements identified during the Sprint 1 Review and Retrospective.
 
-## 2. Documents to Review
+## 2. Documents Reviewed
 
 - Requirements and project scope
 - DFD Level 0
@@ -28,65 +27,77 @@ This review also addresses the improvements identified during the Sprint 1 Revie
 
 ## 3. Requirements Traceability Checklist
 
-- [ ] Check that the documented requirements are represented in the analysis models.
-- [ ] Check that the use cases match the system requirements.
-- [ ] Check that the DFD processes represent the documented system functions.
-- [ ] Check that the design classes support the relevant requirements.
-- [ ] Record any missing or conflicting information.
+- [x] Check that the documented requirements are represented in the analysis models.
+- [x] Check that the use cases match the system requirements.
+- [x] Check that the DFD processes represent the documented system functions.
+- [x] Check that the design classes support the relevant requirements.
+- [x] Record any missing or conflicting information (none identified in the final review).
 
 ## 4. DFD Consistency and Balancing Checklist
 
-- [ ] Compare DFD Level 0 with Level 1.
-- [ ] Compare the relevant Level 1 processes with Level 2.
-- [ ] Verify that external inputs and outputs are preserved between levels.
-- [ ] Check that data flow names are consistent.
-- [ ] Check that data stores are used consistently.
-- [ ] Identify missing, duplicated, or conflicting data flows.
+- [x] Compare DFD Level 0 with Level 1.
+- [x] Compare the relevant Level 1 processes with Level 2.
+- [x] Verify that external inputs and outputs are preserved between levels.
+- [x] Check that data flow names are consistent.
+- [x] Check that data stores are used consistently.
+- [x] Identify missing, duplicated, or conflicting data flows (none remaining).
 
 ## 5. Review Findings
 
-**Status:** Pending verification against the actual diagrams and requirements.
+**Status:** Completed based on the final team review.
 
 | ID | Model / Requirement | Finding | Required Action | Status |
 |---|---|---|---|---|
-| F01 | DFD Level 0 and Level 1 | Pending review | Compare parent and child flows | Pending |
-| F02 | DFD Level 1 and Level 2 | Pending review | Verify balancing | Pending |
-| F03 | Data Flow Names | Pending review | Check naming consistency | Pending |
-| F04 | Requirements and Use Cases | Pending review | Check traceability | Pending |
-| F05 | Design Class Diagram | Pending review | Check model consistency | Pending |
+| F01 | DFD Level 0 and Level 1 | Parent and child data flows were reviewed and confirmed consistent. | No further correction required. | Passed |
+| F02 | DFD Level 1 and Level 2 | Process 4.0 decomposition and balancing were reviewed and confirmed. | No further correction required. | Passed |
+| F03 | Data Flow Names | Data flow names were reviewed for consistency across diagrams. | No further correction required. | Passed |
+| F04 | Requirements and Use Cases | Use cases were checked against the documented requirements. | No further correction required. | Passed |
+| F05 | Design Class Diagram | Design classes were reviewed against the relevant system requirements. | No further correction required. | Passed |
 
 ## 6. Sprint 1 Improvement Follow-Up
 
 The Sprint 1 retrospective identified the need to improve data flow naming consistency and verify DFD balancing before final approval.
 
-The following actions are planned for Sprint 2:
+During Sprint 2, the team reviewed the related DFD levels, checked naming consistency, verified balancing, and incorporated the corrected diagrams into the updated project deliverables.
 
-1. Review related DFD levels together.
-2. Standardize inconsistent data flow names where necessary.
-3. Verify balancing between parent and child diagrams.
-4. Document identified corrections.
-5. Submit the updated review for teammate approval.
+The updated Word report and native Visual Paradigm (.vpp) project were merged into the main branch through PR #25.
 
 ## 7. Validation Results
 
-**Current Status:** Not yet validated.
+**Current Status:** Completed.
 
-Actual findings, applied corrections, and supporting file references will be recorded here after the diagrams and requirements have been checked.
+The final review confirmed that:
+
+1. DFD Level 0 and Level 1 are consistent.
+2. DFD Level 1 and Level 2 preserve the relevant parent-process inputs and outputs.
+3. Data flow names and data store usage are consistent.
+4. Use cases align with the documented requirements.
+5. The Design Class Diagram supports the relevant system functions.
+6. No unresolved inconsistencies were reported during the final review.
+
+**Supporting References:**
+
+- [Milestone 1 Project Files](https://github.com/buthaiinah/team-3-b52/tree/main/Milestone-1)
+- [PR #22 - B12 Review Checklist](https://github.com/buthaiinah/team-3-b52/pull/22)
+- [PR #25 - Updated Report and Corrected Diagrams](https://github.com/buthaiinah/team-3-b52/pull/25)
+- [Issue #12 - Traceability and Model Consistency](https://github.com/buthaiinah/team-3-b52/issues/12)
 
 ## 8. Completion Criteria
 
-- [ ] Requirements traceability has been reviewed.
-- [ ] Relevant DFD levels have been compared.
-- [ ] DFD balancing has been verified.
-- [ ] Data flow naming has been checked.
-- [ ] Identified inconsistencies have been documented.
-- [ ] Required corrections have been applied or assigned.
+- [x] Requirements traceability has been reviewed.
+- [x] Relevant DFD levels have been compared.
+- [x] DFD balancing has been verified.
+- [x] Data flow naming has been checked.
+- [x] Identified inconsistencies have been documented.
+- [x] Required corrections have been applied or assigned.
 - [ ] A teammate has reviewed the final changes.
 
 ## 9. Conclusion
 
-This document records the planned traceability and model consistency review for PearlMart Milestone 1.
+The PearlMart Milestone 1 traceability and model consistency review has been completed.
 
-The review remains in progress until the actual project models have been examined and the validation results have been documented.
+Based on the final review, the requirements, DFD levels, Use Case Diagram, and Design Class Diagram are consistent, with no unresolved issues reported.
+
+The document is ready for teammate review and approval.
 
 **Related GitHub Issue:** #12
