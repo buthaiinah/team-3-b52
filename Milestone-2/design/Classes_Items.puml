@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide empty members
+title Item rules and monetary values
+class Item {
+ - itemId : String
+ - barcode : String
+ - name : String
+ - sellingPrice : BigDecimal
+ - quantity : int
+ - manufacturer : String
+ - origin : String
+ - expiryDate : LocalDate [0..1]
+ - comments : String
+ + isExpired(on : LocalDate) : boolean
+ + hasStock(qty : int) : boolean
+ + addStock(qty : int) : void
+ + removeStock(qty : int) : boolean
+ + updatePrice(price : BigDecimal) : void
+ + copy() : Item
+}
+class SaleLine <<record>> {
+ - itemId : String
+ - name : String
+ - unitPrice : BigDecimal
+ - quantity : int
+ + lineTotal() : BigDecimal
+ + amount() : BigDecimal
+}
+class Totals <<record>> {
+ - subtotal : BigDecimal
+ - discount : BigDecimal
+ - tax : BigDecimal
+ - payable : BigDecimal
+}
+SaleLine "0..*" --> "1" Item : itemId
+
+@enduml

@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide empty members
+title JavaFX and application service model
+class App <<JavaFX boundary/controller>> {
+ - store : InMemoryStore
+ - inventory : InventoryService
+ - sales : SalesService
+ - currentSale : String [0..1]
+ + start(stage : Stage) : void
+ ~ refresh() : void
+}
+class InventoryService {
+ - store : InMemoryStore
+ - actor : User
+ + list() : List<Item>
+ + find(identifier : String) : Item
+ + addNew(item : Item) : void
+ + addExisting(identifier : String, quantity : int) : void
+}
+class SalesService {
+ - store : InMemoryStore
+ - actor : User
+ - pricing : PricingPolicy
+ + start() : Sale
+ + get(id : String) : Sale
+ + addLine(saleId, identifier, q) : void
+ + removeLine(saleId, itemId) : void
+ + calculate(saleId) : Totals
+ + confirm(saleId) : SalesReceipt
+ + cancel(saleId) : void
+ + receipt(saleId) : SalesReceipt
+}
+class InMemoryStore {
+ - state : State
+ - beforeCommit : Runnable
+ + snapshot() : State
+ + transact(operation : UnaryOperator<State>) : void
+ ~ setBeforeCommit(guard : Runnable) : void
+}
+class State <<record>> {
+ - items : Map<String, Item>
+ - sales : Map<String, Sale>
+ - movements : List<StockMovement>
+ - receipts : Map<String, SalesReceipt>
+ - activities : List<ActivityRecord>
+}
+App "1" --> "1" InventoryService
+App "1" --> "1" SalesService
+InventoryService "1" --> "1" InMemoryStore
+SalesService "1" --> "1" InMemoryStore
+InMemoryStore "1" *-- "1" State
+note bottom of InMemoryStore
+  Same store instance for both workflows.
+  Deep-copy Item and Sale at input/output boundaries.
+  Validate and stage all records; publish once.
+end note
+
+@enduml

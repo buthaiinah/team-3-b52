@@ -1,0 +1,117 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide empty members
+title Focused class model overview
+abstract class Transaction {
+ - transactionId : String
+ - occurredAt : Instant
+ - status : Status
+ - recordedBy : User
+ + id() : String
+ + created() : Instant
+ + status() : Status
+ + recordedBy() : User
+ + {abstract} getSummary() : String
+}
+class Sale {
+ - lines : List<SaleLine>
+ - totals : Totals [0..1]
+ - cancellationReason : String
+ + addLine(item : Item, qty : int) : void
+ + removeLine(itemId : String) : void
+ + calculateTotal(policy : PricingPolicy) : BigDecimal
+ + complete() : boolean
+ + cancel(reason : String) : boolean
+ + copy() : Sale
+ + getSummary() : String
+}
+class StockMovement {
+ - itemId : String
+ - quantityChange : int
+ - reason : String
+ - sourceRef : String [0..1]
+ + getSummary() : String
+}
+class Item {
+ - itemId : String
+ - barcode : String
+ - name : String
+ - sellingPrice : BigDecimal
+ - quantity : int
+ - manufacturer : String
+ - origin : String
+ - expiryDate : LocalDate [0..1]
+ - comments : String
+ + isExpired(on : LocalDate) : boolean
+ + hasStock(qty : int) : boolean
+ + addStock(qty : int) : void
+ + removeStock(qty : int) : boolean
+ + updatePrice(price : BigDecimal) : void
+ + copy() : Item
+}
+class SaleLine <<record>> {
+ - itemId : String
+ - name : String
+ - unitPrice : BigDecimal
+ - quantity : int
+ + lineTotal() : BigDecimal
+ + amount() : BigDecimal
+}
+class Totals <<record>> {
+ - subtotal : BigDecimal
+ - discount : BigDecimal
+ - tax : BigDecimal
+ - payable : BigDecimal
+}
+Transaction <|-- Sale
+Transaction <|-- StockMovement
+Sale "1" *-- "0..*" SaleLine
+Sale "1" --> "0..1" Totals
+SaleLine "0..*" --> "1" Item : itemId
+StockMovement "0..*" --> "1" Item : itemId
+note bottom of Sale
+  PENDING may be empty; COMPLETED requires 1+ lines.
+  Calculated amounts are grouped in Totals.
+  Mutations occur on detached transaction-local copies.
+end note
+note bottom of SaleLine
+  Immutable price snapshot; sale-level discount and tax.
+  Association to Item is resolved by itemId.
+end note
+
+class User
+class ActivityRecord
+class SalesReceipt
+class InMemoryStore
+class InventoryService
+class SalesService
+class App
+interface PricingPolicy
+Transaction "0..*" --> "1" User
+ActivityRecord "0..*" --> "1" User
+SalesReceipt "0..1" --> "1" Sale
+InMemoryStore "1" *-- "0..*" Item
+InMemoryStore "1" *-- "0..*" Sale
+InMemoryStore "1" *-- "0..*" StockMovement
+InMemoryStore "1" *-- "0..*" ActivityRecord
+InMemoryStore "1" *-- "0..*" SalesReceipt
+App --> InventoryService
+App --> SalesService
+InventoryService --> InMemoryStore
+SalesService --> InMemoryStore
+InventoryService ..> User
+InventoryService ..> Item
+InventoryService ..> StockMovement
+InventoryService ..> ActivityRecord
+SalesService ..> Sale
+SalesService ..> Item
+SalesService ..> StockMovement
+SalesService ..> ActivityRecord
+SalesService --> PricingPolicy
+Sale ..> PricingPolicy
+
+@enduml

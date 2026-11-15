@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide empty members
+title Transactions and owned sale lines
+abstract class Transaction {
+ - transactionId : String
+ - occurredAt : Instant
+ - status : Status
+ - recordedBy : User
+ + id() : String
+ + created() : Instant
+ + status() : Status
+ + recordedBy() : User
+ + {abstract} getSummary() : String
+}
+class Sale {
+ - lines : List<SaleLine>
+ - totals : Totals [0..1]
+ - cancellationReason : String
+ + addLine(item : Item, qty : int) : void
+ + removeLine(itemId : String) : void
+ + calculateTotal(policy : PricingPolicy) : BigDecimal
+ + complete() : boolean
+ + cancel(reason : String) : boolean
+ + copy() : Sale
+ + getSummary() : String
+}
+class StockMovement {
+ - itemId : String
+ - quantityChange : int
+ - reason : String
+ - sourceRef : String [0..1]
+ + getSummary() : String
+}
+class Item
+class SaleLine <<record>> {
+ - itemId : String
+ - name : String
+ - unitPrice : BigDecimal
+ - quantity : int
+ + lineTotal() : BigDecimal
+ + amount() : BigDecimal
+}
+class Totals <<record>> {
+ - subtotal : BigDecimal
+ - discount : BigDecimal
+ - tax : BigDecimal
+ - payable : BigDecimal
+}
+Transaction <|-- Sale
+Transaction <|-- StockMovement
+Sale "1" *-- "0..*" SaleLine
+Sale "1" --> "0..1" Totals
+SaleLine "0..*" --> "1" Item : itemId
+StockMovement "0..*" --> "1" Item : itemId
+note bottom of Sale
+  PENDING may be empty; COMPLETED requires 1+ lines.
+  Calculated amounts are grouped in Totals.
+  Mutations occur on detached transaction-local copies.
+end note
+note bottom of SaleLine
+  Immutable price snapshot; sale-level discount and tax.
+  Association to Item is resolved by itemId.
+end note
+
+@enduml

@@ -1,0 +1,35 @@
+ID,Use case,Input and procedure,Expected result,Technique,Actual result,Decision,Evidence
+T01,UC04,"New A, quantity 10",Quantity 10; one +10 movement,Normal partition,Quantity 10; one +10 movement,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T02,UC04,A quantity 10; add 5 by barcode,Quantity 15; two movements; sale accepts 15,Integration,Quantity 15; two movements; sale accepts 15,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T03,UC04,Existing A; add 0 and -1,Both rejected; entire state unchanged,Boundary values,Both rejected; entire state unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T04,UC04,Duplicate ID and duplicate barcode,Both rejected; entire state unchanged,Invalid partition,Both rejected; entire state unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T05,UC04,New item with empty name,Rejected; no item created,Invalid partition,Rejected; no item created,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T06,UC04,Inject commit failure during addition,Exception; original state unchanged,Fault injection,Exception; original state unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T07,UC13,"A=10, B=5; buy A x2, B x1 @10",Total 30; A=8 B=4; completed receipt; 2 sale movements,Normal path,Total 30; A=8 B=4; completed receipt; 2 sale movements,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T08,UC13,Add unknown MISSING,Rejected; draft/state unchanged,Invalid partition,Rejected; draft/state unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T09,UC13,"Draft A x1; add 0, -1, then 10",All rejected; no further line/stock changes,Boundary values,All rejected; no further line/stock changes,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T10,UC13/17,Cancel pending A x2,CANCELLED; stock/movements unchanged; no receipt,State transition,CANCELLED; stock/movements unchanged; no receipt,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T11,UC13,Confirm A x2 twice,First completes; second rejected; A=8,State transition,First completes; second rejected; A=8,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T12,UC13,Inject failure before publishing sale,Draft and all stock/records unchanged,Fault injection,Draft and all stock/records unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T13,UC13/14,Another draft consumes B before first confirms,First rejected; no partial A deduction,State transition,First rejected; no partial A deduction,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T14,UC15/16,Subtotal 20; discount 10%; tax 5%,Discount 2; tax 0.90; payable 18.90,Decision/calculation,Discount 2; tax 0.90; payable 18.90,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T15,UC13/15,Empty pending sale,Calculation/confirmation rejected; remains pending,Boundary value,Calculation/confirmation rejected; remains pending,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T16,UC13/17,Cancel completed sale,Rejected; completed state unchanged,State transition,Rejected; completed state unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T17,UC13,Retrieve receipt after confirmation,Same receipt; no stock change,Idempotent read,Same receipt; no stock change,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T18,UC13/14,A stock 10; add 6 then 4 then 1,One line qty10; extra rejected; confirm leaves 0,Boundary values,One line qty10; extra rejected; confirm leaves 0,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T19,UC17,Inject cancellation recording failure,Original pending state retained,Fault injection,Original pending state retained,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T20,Pattern,Build from pending sale / incomplete Builder,Both rejected,Invalid partition,Both rejected,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T21,UC16,Discount rate 1.01,Policy creation rejected,Boundary value,Policy creation rejected,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T22,UC13,Draft qty10 @10; add stock 1; confirm,Unit price 10 retained; remaining stock 1,Snapshot / boundary,Unit price 10 retained; remaining stock 1,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T23,UC13,Remove draft line,Cart empty; stock unchanged,Alternative flow,Cart empty; stock unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T24,UC14,Item expired yesterday,Sale line rejected; stock unchanged,Date boundary,Sale line rejected; stock unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T25,UC16,Subtotal 0.05; discount 10%; tax 5%,Discount 0.01; tax 0.00; total 0.04,Rounding boundary,Discount 0.01; tax 0.00; total 0.04,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T26,UC04/UC13,Create draft and confirm; inspect Sale/StockMovement as Transaction,"Correct inheritance, actor and sale reference",Structural and integration,"Correct inheritance, actor and sale reference",PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T27,UC04/UC13,Add A; complete A x2; inspect activity records,"ADD_GOODS then SALE_COMPLETED, correct user/reference",Audit consistency,"ADD_GOODS then SALE_COMPLETED, correct user/reference",PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T28,UC13,Cancel pending A x2,Reason/user retained; SALE_CANCELLED; no new stock movement; quantity10,State transition,Reason/user retained; SALE_CANCELLED; no new stock movement; quantity10,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T29,UC04,Item stock3; remove4 then3; add0; negative price; add2,Over-removal false; stock0; invalid inputs rejected; stock2,Boundary values,Over-removal false; stock0; invalid inputs rejected; stock2,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T30,UC04/UC13,"Mutate original Item, query result, snapshot and detached Sale",Committed item and sale unchanged,Isolation,Committed item and sale unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T31,UC04/UC13,Sales actor adds goods; inventory actor starts sale,SecurityException; full state unchanged,Permission partition,SecurityException; full state unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T32,UC13,Sale A x2 @10; change Item price to99,Sale line remains10; payable20,Price snapshot,Sale line remains10; payable20,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T33,UC13,Complete empty sale; mutate returned lines; modify completed sale,All invalid mutations rejected; priced nonempty completion succeeds,State transitions and composition,All invalid mutations rejected; priced nonempty completion succeeds,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
+T34,UC04,Stock Integer.MAX_VALUE; add1,ArithmeticException; stock and records unchanged,Overflow boundary,ArithmeticException; stock and records unchanged,PASS,WorkflowTest + TEST-edu.pearlmart.WorkflowTest.xml
