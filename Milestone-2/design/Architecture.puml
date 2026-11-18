@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide empty members
+title Single process JavaFX architecture
+rectangle "JavaFX App\nControls, validation feedback and navigation" as UI
+rectangle "InventoryService\nAuthorized inventory context" as Inv
+rectangle "SalesService\nAuthorized sales context" as Sales
+rectangle "Domain\nItem, Sale, SaleLine, Transaction\nStockMovement, User, ActivityRecord" as Domain
+rectangle "PricingPolicy strategies\nSalesReceipt Builder" as Patterns
+rectangle "InMemoryStore\nDetached state copies and one commit\nNo persistence across restarts" as Store
+UI --> Inv
+UI --> Sales
+Inv --> Domain
+Sales --> Domain
+Sales --> Patterns
+Inv --> Store
+Sales --> Store
+
+@enduml

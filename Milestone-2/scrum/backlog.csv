@@ -1,0 +1,15 @@
+Planning ID,Title,Proposed Sprint,Priority,Estimate hours,Acceptance criteria,Actual assignee,Reviewer,GitHub issue URL,Status
+M2-01,Confirm scope and instructor feedback,1,High,2,Use-case ID mapping; feedback recorded; assumptions reviewed; no invented feedback.,UNASSIGNED,UNASSIGNED,,To plan
+M2-02,Plan two Sprints and prioritize backlog,1,High,2,"Real dates, goals, estimates, owners and acceptance criteria in the existing Project.",UNASSIGNED,UNASSIGNED,,To plan
+M2-03,Review design and create Visual Paradigm models,1,High,5,UC04 and UC13 sequence diagrams; focused class model and architecture; native .vpp opens.,UNASSIGNED,UNASSIGNED,,To plan
+M2-04,Implement and review shared inventory and Add Goods,1,High,5,New/existing items; validation; one movement per addition; failure leaves state unchanged.,UNASSIGNED,UNASSIGNED,,To plan
+M2-05,Implement and review sale drafting and pricing Strategy,1,High,5,Multiple items; repeated-item aggregation; quantity validation; configurable discount and tax; price snapshot.,UNASSIGNED,UNASSIGNED,,To plan
+M2-06,Review constraints and exactly three NFRs,1,Medium,3,Four or more classified constraints; three measurable NFRs; source and verification; scope distinction.,UNASSIGNED,UNASSIGNED,,To plan
+M2-07,Conduct Sprint 1 review and retrospective,1,High,2,Actual date/attendees; demo evidence; accepted/incomplete tasks; improvement owner and target date.,UNASSIGNED,UNASSIGNED,,To plan
+M2-08,Review sale commit cancellation and receipt Builder,2,High,5,Confirm exactly once; recheck stock; no partial changes; cancelled sale recorded; receipt built and displayed.,UNASSIGNED,UNASSIGNED,,To plan
+M2-09,Validate JavaFX usability and shared inventory on Windows,2,High,4,Both workflows on Windows 11; input messages; navigation; screenshot evidence and machine details.,UNASSIGNED,UNASSIGNED,,To plan
+M2-10,Execute Route A test cases and evaluate results,2,High,4,At least 3 cases per use case; normal/alternative paths; expected/actual/pass-fail; raw execution evidence.,UNASSIGNED,UNASSIGNED,,To plan
+M2-11,Verify two pattern categories UML and live use,2,Medium,3,Strategy behavioral and Builder creational; justify against alternatives; UML/code/demo agree.,UNASSIGNED,UNASSIGNED,,To plan
+M2-12,Integrate Word report and reconcile all models,2,High,4,Latest native VP exports replace provisional diagrams; code and tests match; evidence captions accurate.,UNASSIGNED,UNASSIGNED,,To plan
+M2-13,Conduct Sprint 2 review and retrospective,2,High,2,Actual review and retro; show Sprint 1 improvement applied; individual contribution links.,UNASSIGNED,UNASSIGNED,,To plan
+M2-14,Verify final submission package and links,2,High,2,main/Milestone-2 complete; repository/project/milestone/final commit links; four separate peer evaluations.,UNASSIGNED,UNASSIGNED,,To plan

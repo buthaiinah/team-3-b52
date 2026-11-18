@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.pearlmart.WorkflowTest" time="0.551" tests="34" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="22"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\Lenovo\Downloads\PearlMart_Milestone2_Review_Package\PearlMart_Milestone2\Milestone-2\app\target\test-classes;C:\Users\Lenovo\Downloads\PearlMart_Milestone2_Review_Package\PearlMart_Milestone2\Milestone-2\app\target\classes;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\21.0.2\javafx-controls-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\21.0.2\javafx-controls-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.4\junit-jupiter-5.11.4.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.4\junit-jupiter-api-5.11.4.jar;C:\Users\Lenovo\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-commons\1.11.4\junit-platform-commons-1.11.4.jar;C:\Users\Lenovo\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.4\junit-jupiter-params-5.11.4.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.4\junit-jupiter-engine-5.11.4.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-engine\1.11.4\junit-platform-engine-1.11.4.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Africa/Cairo"/>
+    <property name="user.country.format" value="EG"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="22"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
+    <property name="sun.java.command" value="C:\Users\Lenovo\AppData\Local\Temp\surefire11818582364069208873\surefirebooter-20261114214147888_3.jar C:\Users\Lenovo\AppData\Local\Temp\surefire11818582364069208873 ????-??-??T??-??-??_???-jvmRun1 surefire-20261114214147888_1tmp surefire_0-20261114214147888_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Lenovo\Downloads\PearlMart_Milestone2_Review_Package\PearlMart_Milestone2\Milestone-2\app\target\test-classes;C:\Users\Lenovo\Downloads\PearlMart_Milestone2_Review_Package\PearlMart_Milestone2\Milestone-2\app\target\classes;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\21.0.2\javafx-controls-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\21.0.2\javafx-controls-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.4\junit-jupiter-5.11.4.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.4\junit-jupiter-api-5.11.4.jar;C:\Users\Lenovo\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-commons\1.11.4\junit-platform-commons-1.11.4.jar;C:\Users\Lenovo\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.4\junit-jupiter-params-5.11.4.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.4\junit-jupiter-engine-5.11.4.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-engine\1.11.4\junit-platform-engine-1.11.4.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Lenovo"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-04-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-22"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Lenovo\Downloads\PearlMart_Milestone2_Review_Package\PearlMart_Milestone2\Milestone-2\app"/>
+    <property name="style.color" value="always"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Lenovo\AppData\Local\Temp\surefire11818582364069208873\surefirebooter-20261114214147888_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="22.0.1+8-16"/>
+    <property name="user.name" value="Lenovo"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\Lenovo\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Lenovo\AppData\Local\Temp\"/>
+    <property name="java.version" value="22.0.1"/>
+    <property name="user.dir" value="C:\Users\Lenovo\Downloads\PearlMart_Milestone2_Review_Package\PearlMart_Milestone2\Milestone-2\app"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.language.format" value="ar"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-22\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;%PATH%;C:\php;C:\Users\Lenovo\Downloads\php-8.4.11-nts-Win32-vs17-x64;C:\composer;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Users\Lenovo\AppData\Local\Muse Hub\lib;E:\bin;C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI\;C:\Users\Lenovo\.local\bin;C:\Users\Lenovo\scoop\shims;C:\Program Files\Java\jdk-22\bin;C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\;C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\python.exe -m pydoc -b;C:\Users\Lenovo\AppData\Roaming\npm;C:\Program Files\Docker\Docker;C:\Program Files\CMake\bin\cmake-gui.exe;C:\Program Files\Microsoft.NET;C:\Program Files\heroku\bin;C:\spark\spark-3.5.1-bin-hadoop3\bin;C:\Program Files\Oracle\VirtualBox;C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps;C:\Users\Lenovo\.dotnet\tools;C:\Users\Lenovo\AppData\Local\Pandoc\;C:\Users\Lenovo\AppData\Roaming\Composer\vendor\bin;C:\Users\Lenovo\AppData\Local\Programs\Ollama;C:\Users\Lenovo\AppData\Local\Muse Hub\lib;C:\Users\Lenovo\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="22.0.1+8-16"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="66.0"/>
+  </properties>
+  <testcase name="T10_cancelPreservesStockAndRecordsCancellation" classname="edu.pearlmart.WorkflowTest" time="0.244"/>
+  <testcase name="T29_itemOwnsStockAndPriceRules" classname="edu.pearlmart.WorkflowTest" time="0.007"/>
+  <testcase name="T12_finalizationFailureLeavesDraftAndStock" classname="edu.pearlmart.WorkflowTest" time="0.056"/>
+  <testcase name="T24_expiredItemRejected" classname="edu.pearlmart.WorkflowTest" time="0.008"/>
+  <testcase name="T26_transactionInheritanceAndActorLinks" classname="edu.pearlmart.WorkflowTest" time="0.005"/>
+  <testcase name="T19_cancellationFailureDoesNotChangeState" classname="edu.pearlmart.WorkflowTest" time="0.005"/>
+  <testcase name="T11_confirmTwiceNeverDeductsTwice" classname="edu.pearlmart.WorkflowTest" time="0.01"/>
+  <testcase name="T30_externalReferencesCannotMutateCommittedState" classname="edu.pearlmart.WorkflowTest" time="0.003"/>
+  <testcase name="T33_saleLifecycleAndOwnedLinesCannotBeBypassed" classname="edu.pearlmart.WorkflowTest" time="0.004"/>
+  <testcase name="T01_newItemCreatesOneMovement" classname="edu.pearlmart.WorkflowTest" time="0.002"/>
+  <testcase name="T31_roleChecksRejectWrongWorkflowWithoutWrites" classname="edu.pearlmart.WorkflowTest" time="0.003"/>
+  <testcase name="T08_unknownItemRejected" classname="edu.pearlmart.WorkflowTest" time="0.003"/>
+  <testcase name="T02_existingItemIncreasesSharedStock" classname="edu.pearlmart.WorkflowTest" time="0.009"/>
+  <testcase name="T34_inventoryOverflowLeavesRecordsUnchanged" classname="edu.pearlmart.WorkflowTest" time="0.004"/>
+  <testcase name="T04_duplicateIdentificationRejected" classname="edu.pearlmart.WorkflowTest" time="0.004"/>
+  <testcase name="T15_emptySaleCannotComplete" classname="edu.pearlmart.WorkflowTest" time="0.004"/>
+  <testcase name="T17_receiptRetrievalHasNoStockEffect" classname="edu.pearlmart.WorkflowTest" time="0.004"/>
+  <testcase name="T13_stockRecheckedBeforeCommitWithoutPartialDeduction" classname="edu.pearlmart.WorkflowTest" time="0.007"/>
+  <testcase name="T18_duplicateLinesAggregateAgainstAvailableStock" classname="edu.pearlmart.WorkflowTest" time="0.01"/>
+  <testcase name="T20_builderRejectsPendingSale" classname="edu.pearlmart.WorkflowTest" time="0.004"/>
+  <testcase name="T09_invalidAndInsufficientSaleQuantity" classname="edu.pearlmart.WorkflowTest" time="0.003"/>
+  <testcase name="T03_nonpositiveAdditionRejected" classname="edu.pearlmart.WorkflowTest" time="0.004"/>
+  <testcase name="T21_invalidPolicyRejected" classname="edu.pearlmart.WorkflowTest" time="0.002"/>
+  <testcase name="T27_addAndCompleteActivityRecordsAreAtomic" classname="edu.pearlmart.WorkflowTest" time="0.004"/>
+  <testcase name="T06_additionCommitFailureLeavesNoChanges" classname="edu.pearlmart.WorkflowTest" time="0.005"/>
+  <testcase name="T32_priceSnapshotSurvivesItemPriceChange" classname="edu.pearlmart.WorkflowTest" time="0.001"/>
+  <testcase name="T28_cancelRecordsActorReasonWithoutStockMovement" classname="edu.pearlmart.WorkflowTest" time="0.003"/>
+  <testcase name="T16_completedSaleCannotCancel" classname="edu.pearlmart.WorkflowTest" time="0.003"/>
+  <testcase name="T22_exactStockBoundaryAndPriceSnapshot" classname="edu.pearlmart.WorkflowTest" time="0.004"/>
+  <testcase name="T05_missingMandatoryFieldRejected" classname="edu.pearlmart.WorkflowTest" time="0.002"/>
+  <testcase name="T23_removeLineLeavesStockUntouched" classname="edu.pearlmart.WorkflowTest" time="0.005"/>
+  <testcase name="T07_multilineSaleReceiptAndStock" classname="edu.pearlmart.WorkflowTest" time="0.005"/>
+  <testcase name="T14_discountThenTaxPolicy" classname="edu.pearlmart.WorkflowTest" time="0.003"/>
+  <testcase name="T25_roundingHalfUp" classname="edu.pearlmart.WorkflowTest" time="0.002"/>
+</testsuite>

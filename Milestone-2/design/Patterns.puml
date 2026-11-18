@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide empty members
+title Strategy and Builder in executed workflows
+interface PricingPolicy {
+ + calculate(lines : List<SaleLine>) : Totals
+}
+class NoAdjustmentPricing {
+ + calculate(lines) : Totals
+}
+class PercentagePricing {
+ - discountRate : BigDecimal
+ - taxRate : BigDecimal
+ + calculate(lines) : Totals
+}
+class PricingConfig {
+ + {static} load() : PricingPolicy
+}
+class SalesService {
+ - pricing : PricingPolicy
+ + confirm(saleId) : SalesReceipt
+}
+class Sale {
+ + calculateTotal(policy : PricingPolicy) : BigDecimal
+}
+class "SalesReceipt.Builder" as Builder {
+ - receiptId : String
+ - issued : Instant
+ - sale : Sale
+ + identity(id, at) : Builder
+ + fromCompletedSale(sale) : Builder
+ + build() : SalesReceipt
+}
+class SalesReceipt <<record>> {
+ - receiptId : String
+ - saleId : String
+ - issued : Instant
+ - lines : List<SaleLine>
+ - totals : Totals
+ + text() : String
+}
+PricingPolicy <|.. NoAdjustmentPricing
+PricingPolicy <|.. PercentagePricing
+PricingConfig ..> PricingPolicy : selects
+SalesService "1" --> "1" PricingPolicy
+SalesService ..> Sale : calculateTotal(policy)
+Sale ..> PricingPolicy
+SalesService ..> Builder : before commit
+Builder ..> SalesReceipt : builds
+SalesReceipt "0..1" --> "1" Sale : saleId
+note bottom of PricingPolicy: Behavioral Strategy\nDiscount then tax; monetary HALF_UP rounding
+note bottom of Builder: Creational Builder\nRequires identity and completed priced sale
+
+@enduml

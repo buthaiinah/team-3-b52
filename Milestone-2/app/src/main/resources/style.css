@@ -1,0 +1,6 @@
+.button { -fx-background-color: #176b70; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 9 14; }
+.button:hover { -fx-background-color: #0d5258; }
+.text-field, .date-picker { -fx-pref-height: 34; }
+.tab-pane .tab-header-area .tab-header-background { -fx-background-color: #e5edef; }
+.table-view { -fx-background-color: white; -fx-border-color: #dbe5e8; }
+.label { -fx-text-fill: #233b44; }

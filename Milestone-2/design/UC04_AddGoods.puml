@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide empty members
+title UC04 Add Goods including alternative paths
+actor "Authorized inventory manager" as User
+boundary "App : JavaFX" as UI
+control "InventoryService" as Service
+participant "Item" as Item
+entity "InMemoryStore" as Store
+User -> UI : Enter new item data or existing identifier and quantity
+UI -> Service : addNew(item) / addExisting(identifier, quantity)
+Service -> Service : actor.require(ADD_GOODS); validate positive quantity
+alt Invalid role, required data or quantity
+ Service --> UI : Exception; display error; no changes
+else Input accepted
+ opt Existing item
+  Service -> Store : snapshot(); find identifier
+  Store --> Service : detached item or not found
+ end
+ Service -> Store : transact(callback)
+ activate Store
+ Store -> Store : snapshot() deep copies
+ Store -> Service : callback(detached State)
+ Service -> Service : verify uniqueness / existing item
+ alt Existing item
+  Service -> Item : addStock(quantity)
+ else New item
+  Service -> Service : stage validated Item
+ end
+ Service -> Service : create StockMovement and ActivityRecord\nwith recordedBy user
+ Service --> Store : candidate State
+ alt Duplicate, missing item, overflow or recording failure
+  Store --> Service : Exception; committed State unchanged
+  Service --> UI : error
+ else Valid candidate
+  Store -> Store : beforeCommit(); deep-copy and publish once
+  Store --> Service : committed
+  Service --> UI : success
+  UI -> Service : list()
+  Service --> UI : updated shared inventory
+  UI --> User : updated quantity and confirmation
+ end
+ deactivate Store
+end
+
+@enduml

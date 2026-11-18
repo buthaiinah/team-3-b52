@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide empty members
+title UC13 Process Sale with UC17 cancellation alternative
+actor "Authorized salesperson" as User
+boundary "App : JavaFX" as UI
+control "SalesService" as Service
+participant "Sale / Item / PricingPolicy" as Domain
+entity "InMemoryStore" as Store
+User -> UI : Start new sale
+UI -> Service : start()
+Service -> Store : transact: save PENDING Sale with recordedBy
+loop Add or remove product lines
+ User -> UI : identifier and positive quantity
+ UI -> Service : addLine(saleId, identifier, q)
+ Service -> Store : transact: detached draft and current items
+ Service -> Domain : Sale.addLine(item, q)\nItem.isExpired / hasStock
+ alt Unknown, expired, invalid quantity or insufficient stock
+  Service --> UI : error; no committed change
+ else Valid line
+  Service -> Store : save draft with price snapshot; no deduction
+  UI -> Service : calculate(saleId)
+  Service -> Domain : Sale.calculateTotal(policy)\nPricingPolicy.calculate(lines)
+  Domain --> Service : Totals
+  Service --> UI : subtotal, discount, tax, payable
+ end
+end
+alt Cancellation requested but dialog declined
+ User -> UI : Choose No in cancellation dialog
+ UI --> User : keep draft; no service call or state change
+else Cancel pending sale UC17 confirmed
+ User -> UI : Accept cancellation dialog
+ UI -> Service : cancel(saleId)
+ Service -> Store : transact(callback)
+ Service -> Domain : Sale.cancel(reason)
+ Service -> Store : stage CANCELLED Sale and ActivityRecord
+ Store -> Store : publish together or retain previous state on failure
+ Service --> UI : cancelled; no stock movement or receipt
+else Confirm pending sale
+ User -> UI : Confirm
+ UI -> Service : confirm(saleId)
+ Service -> Store : transact(callback): detached State
+ Service -> Domain : calculateTotal(policy); recheck all availability
+ loop Each sale line
+  Service -> Domain : Item.hasStock / isExpired / removeStock
+  Service -> Service : stage StockMovement with sale reference
+ end
+ Service -> Domain : Sale.complete()
+ Service -> Service : SalesReceipt.Builder.identity\n.fromCompletedSale(...).build()
+ Service -> Store : candidate stock, sale, movements, receipt, ActivityRecord
+ alt Empty/closed sale, stock changed, expiry or commit failure
+  Store --> Service : error; original stock and all records unchanged
+  Service --> UI : error
+ else Candidate accepted
+  Store -> Store : publish once
+  Service --> UI : completed receipt
+  UI --> User : receipt and updated shared quantities
+ end
+end
+note over Service,Store: Only PENDING sales may change; repeat confirmation is rejected.\nCallback steps execute inside the store transaction boundary.
+
+@enduml

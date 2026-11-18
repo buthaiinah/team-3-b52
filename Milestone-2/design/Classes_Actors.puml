@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide empty members
+title User and activity traceability
+class User <<record>> {
+ - userId : String
+ - username : String
+ - role : Role
+ + canPerform(action : String) : boolean
+ + require(action : String) : void
+}
+enum Role {
+ INVENTORY_MANAGER
+ SALESPERSON
+}
+abstract class Transaction {
+ - recordedBy : User
+ + getSummary() : String
+}
+class ActivityRecord <<record>> {
+ - activityId : String
+ - timestamp : Instant
+ - action : String
+ - recordRef : String
+ - details : String
+ - recordedBy : User
+ + getSummary() : String
+}
+User "0..*" --> "1" Role
+Transaction "0..*" --> "1" User : recordedBy
+ActivityRecord "0..*" --> "1" User : recordedBy
+ActivityRecord ..> Transaction : recordRef identifies business action
+note bottom of User
+  Authorized prototype identities per workflow.
+  Role checks run in services; no login/password subsystem.
+  Other full-system roles remain outside this focused model.
+end note
+
+@enduml
