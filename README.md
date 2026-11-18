@@ -195,11 +195,4 @@ Tasks follow **Todo → In Progress → In Review → Done**. Individual contrib
 
 [Issues](https://github.com/buthaiinah/team-3-b52/issues) · [Project board](https://github.com/users/buthaiinah/projects/2) · [Milestones](https://github.com/buthaiinah/team-3-b52/milestones) · [Pull requests](https://github.com/buthaiinah/team-3-b52/pulls)
 
-## Scope and submission status
-
-This is a focused academic desktop prototype. Authorized workflow roles are assumed; full login, dashboards, charts, supplier management and database deployment are outside the implemented M2 scope. It does not claim production-scale concurrency or durable storage.
-
-The merged repository contains the application, report and Windows evidence. Final submission checks still include the native M2 `.vpp`, genuine completed Scrum meeting records, exact tested revision provenance and final document review. Issue closure alone is not proof of these artifacts.
-
-The consolidated report was prepared before PR #27 was merged, so its statements that the PR is open are historical and need a post-merge revision. Some supporting M2 notes also retain earlier preparation-stage wording. Use the linked execution evidence for recorded Windows results.
 
